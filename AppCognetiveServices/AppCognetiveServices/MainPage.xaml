@@ -8,7 +8,13 @@
         <!-- Place new controls here -->
         <Label Text="Welcome to Xamarin.Forms!" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+               x:Name="lblWelcome" />
+
+        <Entry x:Name="txtValor" 
+               Placeholder="Ingrese el valor"
+               Keyboard="Text"/>
+
+        <Button Text="Analizar" Clicked="Button_Clicked"/>
     </StackLayout>
 
 </ContentPage>
