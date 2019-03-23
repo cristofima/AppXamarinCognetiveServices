@@ -10,9 +10,13 @@
            HorizontalOptions="Center"
                x:Name="lblWelcome" />
 
-        <Entry x:Name="txtValor" 
-               Placeholder="Ingrese el valor"
-               Keyboard="Text"/>
+        <Picker x:Name="picker"
+            Title="Seleccione el idioma" />
+
+        <Editor x:Name="txtValor" 
+               Placeholder="Ingrese el texto"
+                AutoSize="TextChanges" 
+               MaxLength="50"/>
 
         <Button Text="Analizar" Clicked="Button_Clicked"/>
     </StackLayout>

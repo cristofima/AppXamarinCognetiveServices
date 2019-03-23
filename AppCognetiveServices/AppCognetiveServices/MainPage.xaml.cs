@@ -14,19 +14,41 @@ namespace AppCognetiveServices
             InitializeComponent();
             this.lblWelcome.Text = "Cognetive Services Text Analytics";
             this.ApiServices = new ApiServices();
+
+            var languagesList = new List<Language>()
+            {
+                new Language { Code = "en", Name = "Inglés" },
+                new Language { Code = "es", Name = "Español" },
+                new Language { Code = "da", Name = "Danés" },
+                new Language { Code = "fr", Name = "Francés" },
+                new Language { Code = "de", Name = "Alemán" },
+                new Language { Code = "el", Name = "Griego" },
+                new Language { Code = "it", Name = "Italiano" },
+                new Language { Code = "no", Name = "Noruego" },
+                new Language { Code = "pl", Name = "Polaco" },
+                new Language { Code = "pt", Name = "Portugués" },
+                new Language { Code = "ru", Name = "Ruso" },
+                new Language { Code = "sv", Name = "Sueco" },
+                new Language { Code = "tr", Name = "Turco" }
+            };
+
+            this.picker.ItemsSource = languagesList;
+            picker.ItemDisplayBinding = new Binding("Name");
         }
 
         private async void Button_Clicked(object sender, System.EventArgs e)
         {
             var texto = this.txtValor.Text;
-            if (!string.IsNullOrEmpty(texto))
+            if (!string.IsNullOrEmpty(texto) && this.picker.SelectedItem !=null)
             {
                 texto = texto.Trim();
+                var language = (Language)this.picker.SelectedItem;
+
                 var request = new Request
                 {
                     documents = new List<Document>()
                     {
-                        new Document{language="es", id=1,text=texto}
+                        new Document{language=language.Code, id=1,text=texto}
                     }
                 };
 
@@ -42,7 +64,7 @@ namespace AppCognetiveServices
             }
             else
             {
-                await DisplayAlert("Error", "Por favor ingrese un texto", "OK");
+                await DisplayAlert("Error", "Por favor ingrese la información solicitada.", "OK");
             }
         }
     }
