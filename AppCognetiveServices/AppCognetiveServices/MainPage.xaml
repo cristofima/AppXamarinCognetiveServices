@@ -2,23 +2,23 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AppCognetiveServices"
+             Title="Inicio"
              x:Class="AppCognetiveServices.MainPage">
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
+        <Label Text="Welcome to Xamarin.Forms!"
            HorizontalOptions="Center"
                x:Name="lblWelcome" />
 
         <Picker x:Name="picker"
             Title="Seleccione el idioma" />
 
-        <Editor x:Name="txtValor" 
+        <Editor x:Name="txtValor"
                Placeholder="Ingrese el texto"
-                AutoSize="TextChanges" 
-               MaxLength="50"/>
+                AutoSize="TextChanges"
+               MaxLength="50" />
 
-        <Button Text="Analizar" Clicked="Button_Clicked"/>
+        <Button Text="Analizar" Clicked="Button_Clicked" />
     </StackLayout>
-
 </ContentPage>

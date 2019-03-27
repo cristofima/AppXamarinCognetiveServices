@@ -39,7 +39,7 @@ namespace AppCognetiveServices
         private async void Button_Clicked(object sender, System.EventArgs e)
         {
             var texto = this.txtValor.Text;
-            if (!string.IsNullOrEmpty(texto) && this.picker.SelectedItem !=null)
+            if (!string.IsNullOrEmpty(texto) && this.picker.SelectedItem != null)
             {
                 texto = texto.Trim();
                 var language = (Language)this.picker.SelectedItem;
@@ -58,7 +58,7 @@ namespace AppCognetiveServices
                     if (response.errors.Count < 1)
                     {
                         var score = response.documents[0].score;
-                        await DisplayAlert("Escore", score + "", "OK");
+                        await DisplayAlert("Score", score + "", "OK");
                     }
                 }
             }
