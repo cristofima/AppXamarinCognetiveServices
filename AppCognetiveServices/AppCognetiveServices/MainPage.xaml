@@ -6,23 +6,34 @@
     xmlns:local="clr-namespace:AppCognetiveServices"
     Title="Inicio">
 
-    <StackLayout>
+    <StackLayout Padding="5">
 
-        <Label
-            x:Name="lblWelcome"
-            HorizontalOptions="Center"
-            Text="Welcome to Xamarin.Forms!" />
+        <Label HorizontalOptions="Center" Text="Microsoft Cognetive Services - Text Analytics" />
 
         <Picker x:Name="picker" Title="Seleccione el idioma" />
 
         <Editor
             x:Name="txtValor"
             AutoSize="TextChanges"
-            MaxLength="50"
+            MaxLength="100"
             Placeholder="Ingrese el texto" />
 
         <Button Clicked="Button_Clicked" Text="Analizar" />
 
         <ActivityIndicator x:Name="actInd" IsVisible="False" />
+
+        <Label x:Name="lblScore" IsVisible="False">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold" Text="Puntaje: " />
+                    <Span x:Name="spanScore" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <ProgressBar
+            x:Name="prgBar"
+            IsVisible="False"
+            ProgressColor="Blue" />
     </StackLayout>
 </ContentPage>

@@ -12,7 +12,6 @@ namespace AppCognetiveServices
         public MainPage()
         {
             InitializeComponent();
-            this.lblWelcome.Text = "Cognetive Services Text Analytics";
             this.ApiServices = new ApiServices();
 
             var languagesList = new List<Language>()
@@ -41,8 +40,7 @@ namespace AppCognetiveServices
             Button btn = (Button)sender;
             btn.IsEnabled = false;
 
-            this.actInd.IsVisible = true;
-            this.actInd.IsRunning = true;
+            this.ResetComponents();
 
             var texto = this.txtValor.Text;
             if (!string.IsNullOrEmpty(texto) && this.picker.SelectedItem != null)
@@ -64,18 +62,84 @@ namespace AppCognetiveServices
                     if (response.errors.Count < 1)
                     {
                         var score = response.documents[0].score;
+                        this.ShowScore(score);
+
+                        this.CloseActivityIndicator();
                         await DisplayAlert("Score", score + "", "OK");
                     }
                 }
             }
             else
             {
+                this.CloseActivityIndicator();
                 await DisplayAlert("Error", "Por favor ingrese la información solicitada.", "OK");
             }
 
             btn.IsEnabled = true;
+        }
+
+        private void CloseActivityIndicator()
+        {
             this.actInd.IsVisible = false;
             this.actInd.IsRunning = false;
+        }
+
+        private void ResetComponents()
+        {
+            this.actInd.IsVisible = true;
+            this.actInd.IsRunning = true;
+            this.spanScore.Text = "";
+            this.lblScore.IsVisible = false;
+            this.prgBar.IsVisible = false;
+        }
+
+        private void ShowScore(double score)
+        {
+            this.spanScore.Text = score + "";
+            this.lblScore.IsVisible = true;
+            this.prgBar.IsVisible = true;
+            this.prgBar.Progress = score;
+
+            if (score <= 0.1)
+            {
+                this.prgBar.ProgressColor = Color.DarkRed;
+            }
+            else if (score <= 0.2)
+            {
+                this.prgBar.ProgressColor = Color.Red;
+            }
+            else if (score <= 0.3)
+            {
+                this.prgBar.ProgressColor = Color.OrangeRed;
+            }
+            else if (score <= 0.4)
+            {
+                this.prgBar.ProgressColor = Color.DarkOrange;
+            }
+            else if (score <= 0.5)
+            {
+                this.prgBar.ProgressColor = Color.Orange;
+            }
+            else if (score <= 0.6)
+            {
+                this.prgBar.ProgressColor = Color.Yellow;
+            }
+            else if (score <= 0.7)
+            {
+                this.prgBar.ProgressColor = Color.GreenYellow;
+            }
+            else if (score <= 0.8)
+            {
+                this.prgBar.ProgressColor = Color.YellowGreen;
+            }
+            else if (score <= 0.9)
+            {
+                this.prgBar.ProgressColor = Color.Green;
+            }
+            else
+            {
+                this.prgBar.ProgressColor = Color.DarkGreen;
+            }
         }
     }
 }
