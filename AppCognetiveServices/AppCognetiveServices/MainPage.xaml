@@ -1,24 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:AppCognetiveServices"
-             Title="Inicio"
-             x:Class="AppCognetiveServices.MainPage">
+<ContentPage
+    x:Class="AppCognetiveServices.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppCognetiveServices"
+    Title="Inicio">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!"
-           HorizontalOptions="Center"
-               x:Name="lblWelcome" />
 
-        <Picker x:Name="picker"
-            Title="Seleccione el idioma" />
+        <Label
+            x:Name="lblWelcome"
+            HorizontalOptions="Center"
+            Text="Welcome to Xamarin.Forms!" />
 
-        <Editor x:Name="txtValor"
-               Placeholder="Ingrese el texto"
-                AutoSize="TextChanges"
-               MaxLength="50" />
+        <Picker x:Name="picker" Title="Seleccione el idioma" />
 
-        <Button Text="Analizar" Clicked="Button_Clicked" />
+        <Editor
+            x:Name="txtValor"
+            AutoSize="TextChanges"
+            MaxLength="50"
+            Placeholder="Ingrese el texto" />
+
+        <Button Clicked="Button_Clicked" Text="Analizar" />
+
+        <ActivityIndicator x:Name="actInd" IsVisible="False" />
     </StackLayout>
 </ContentPage>

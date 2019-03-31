@@ -29,8 +29,6 @@ namespace AppCognetiveServices.Services
                 // Request headers
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "xxxxxxxx");
 
-                //client.BaseAddress = new Uri(urlBase);
-
                 var url =urlBase +"/" + suffix;
 
                 // Consumo de servicio

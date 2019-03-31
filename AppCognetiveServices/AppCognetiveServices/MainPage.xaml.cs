@@ -17,12 +17,12 @@ namespace AppCognetiveServices
 
             var languagesList = new List<Language>()
             {
-                new Language { Code = "en", Name = "Inglés" },
-                new Language { Code = "es", Name = "Español" },
-                new Language { Code = "da", Name = "Danés" },
-                new Language { Code = "fr", Name = "Francés" },
                 new Language { Code = "de", Name = "Alemán" },
+                new Language { Code = "da", Name = "Danés" },
+                new Language { Code = "es", Name = "Español" },
+                new Language { Code = "fr", Name = "Francés" },
                 new Language { Code = "el", Name = "Griego" },
+                new Language { Code = "en", Name = "Inglés" },
                 new Language { Code = "it", Name = "Italiano" },
                 new Language { Code = "no", Name = "Noruego" },
                 new Language { Code = "pl", Name = "Polaco" },
@@ -38,6 +38,12 @@ namespace AppCognetiveServices
 
         private async void Button_Clicked(object sender, System.EventArgs e)
         {
+            Button btn = (Button)sender;
+            btn.IsEnabled = false;
+
+            this.actInd.IsVisible = true;
+            this.actInd.IsRunning = true;
+
             var texto = this.txtValor.Text;
             if (!string.IsNullOrEmpty(texto) && this.picker.SelectedItem != null)
             {
@@ -66,6 +72,10 @@ namespace AppCognetiveServices
             {
                 await DisplayAlert("Error", "Por favor ingrese la información solicitada.", "OK");
             }
+
+            btn.IsEnabled = true;
+            this.actInd.IsVisible = false;
+            this.actInd.IsRunning = false;
         }
     }
 }
